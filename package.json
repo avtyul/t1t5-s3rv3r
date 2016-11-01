@@ -1,0 +1,28 @@
+{
+  "name": "t1t5-s3rv3r",
+  "version": "1.0.0",
+  "description": "The intelligent task service",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avtyul/t1t5-s3rv3r.git"
+  },
+  "author": [
+    "avtyul",
+    "KasyanDiGris"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avtyul/t1t5-s3rv3r/issues"
+  },
+  "homepage": "https://github.com/avtyul/t1t5-s3rv3r#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.5",
+    "node-gcm": "^0.14.4"
+  }
+}

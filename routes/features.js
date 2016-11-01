@@ -1,40 +1,53 @@
 const express = require('express');
 const router = express.Router();
 const FeatureModel = require('../models/Feature');
+const jwt = require('jsonwebtoken');
 
 // Получение всех
 router.get('/', (req, res) => {
     FeatureModel.find((error, features) => {
         if(error) {
-            res.send('500');
+            res.send('Error');
             return;
         }
-        res.send(JSON.stringify(features));
+        res.json(features);
     });
 });
 
-// Добавление нового
+// Добавление нового, по токену
 router.post('/', (req, res) => {
-    let data = req.body;
+    jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
+        if (error) {
+            res.send('Token error');
+            return;
+        }
+    });
+    let data = req.body.data;
     if (!data) {
-        res.send('404');
+        res.send('Error');
         return;
     }
     FeatureModel.addFeature(data)
         .then((feature) => {
-            res.send(JSON.stringify({_id: feature._id}));
+            res.json({_id: feature._id});
         })
         .catch((error) => {
             console.log(error);
-            res.send('500');
+            res.send('Error');
         });
 });
 
-// Удаление всех
+// Удаление всех, по токену
 router.delete('/', (req, res) => {
+    jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
+        if (error) {
+            res.send('Token error');
+            return;
+        }
+    });
     FeatureModel.remove({}, (error, feature) => {
         if (error) {
-            res.send('500');
+            res.send('Error');
             return;
         }
         res.send('200');
@@ -46,46 +59,58 @@ router.get('/:id', (req, res) => {
     let id = req.params.id;
     FeatureModel.findOne({_id: id}, (error, feature) => {
         if (error || !feature) {
-            res.send('404');
+            res.send('Error');
             return;
         }
-        res.send(JSON.stringify(feature));
+        res.json(feature);
     });
 });
 
-// Изменение конкретного
+// Изменение конкретного, по токену
 router.put('/:id', (req, res) => {
+    jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
+        if (error) {
+            res.send('Token error');
+            return;
+        }
+    });
     let id = req.params.id;
-    let data = req.body;
+    let data = req.body.data;
     if (!data) {
-        res.send('404');
+        res.send('Error');
         return;
     }
     FeatureModel.changeFeature(data)
         .then((feature) => {
-            res.send(JSON.stringify({_id: feature._id}));
+            res.json({_id: feature._id});
         })
         .catch((error) => {
             console.log(error);
-            res.send('500');
+            res.send('Error');
         });
 });
 
-// Удаление конкретного
+// Удаление конкретного, по токену
 router.delete('/:id', (req, res) => {
+    jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
+        if (error) {
+            res.send('Token error');
+            return;
+        }
+    });
     let id = req.params.id;
     FeatureModel.findOne({_id: id}, (error, feature) => {
         if (error || !feature) {
-            res.send('404');
+            res.send('Error');
             return;
         }
         feature.removeFeature()
             .then(() => {
-                res.send('200 OK');
+                res.send('OK');
             })
             .catch((error) => {
                 console.log(error);
-                res.send('500');
+                res.send('Error');
             });
     });
 });

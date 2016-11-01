@@ -7,7 +7,7 @@ const featuresRoute = require('./routes/features')
 
 mongoose.connect('mongodb://localhost/t1t5');
 
-app.use('/features', featuresRoute);
+app.use('/features', bodyParser.json(), featuresRoute);
 
 app.get('/', (req, res) => {
     res.send('w3lc0m3 t0 t1t5');

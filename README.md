@@ -31,20 +31,20 @@ Also, u need mongodb.
 Возвращает массив фич.
 ```
 [
-  {
-    "_id": "id",
-    "action": "action",
-    "type": "type",
-    "icon": "icon",
-    "__v": 0
-  },
-  {
-    "_id": "id",
-    "action": "action",
-    "type": "type",
-    "icon": "icon",
-    "__v": 0
-  }
+    {
+        "_id": "id",
+        "action": "action",
+        "type": "type",
+        "icon": "icon",
+        "__v": 0
+    },
+    {
+        "_id": "id",
+        "action": "action",
+        "type": "type",
+        "icon": "icon",
+        "__v": 0
+    }
 ]
 ```
 
@@ -63,7 +63,7 @@ Also, u need mongodb.
 Возвращает id фичи
 ```
 {
-  "_id": "id"
+    "_id": "id"
 }
 ```
 
@@ -71,11 +71,11 @@ Also, u need mongodb.
 Возвращает конкретную фичу
 ```
 {
-  "_id": "id",
-  "action": "action",
-  "type": "type",
-  "icon": "icon",
-  "__v": 0
+    "_id": "id",
+    "action": "action",
+    "type": "type",
+    "icon": "icon",
+    "__v": 0
 }
 ```
 
@@ -83,14 +83,12 @@ Also, u need mongodb.
 Изменяет конкретную фичу
 ```
 {
-  "data": {
-      "_id": "id",
-      "action": "newaction",
-      "type": "newtype",
-      "icon": "newicon",
-      "__v": 0
-  },
-  "token": "token"
+    "data": {
+        "action": "newaction",
+        "type": "newtype",
+        "icon": "newicon"
+    },
+    "token": "token"
 }
 ```
 Возвращает id фичи

@@ -4,6 +4,8 @@ const DeviceSchema = new mongoose.Schema({
     deviceName: String,
     deviceId: String,
     registrationId: String
+},{
+   versionKey: false
 });
 
 DeviceSchema.statics.addDevice = function(data) {

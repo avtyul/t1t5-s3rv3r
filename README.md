@@ -66,15 +66,13 @@ sudo systemctl enable mongodb
         "_id": "id",
         "action": "action",
         "type": "type",
-        "icon": "icon",
-        "__v": 0
+        "icon": "icon"
     },
     {
         "_id": "id",
         "action": "action",
         "type": "type",
-        "icon": "icon",
-        "__v": 0
+        "icon": "icon"
     }
 ]
 ```
@@ -105,8 +103,7 @@ sudo systemctl enable mongodb
     "_id": "id",
     "action": "action",
     "type": "type",
-    "icon": "icon",
-    "__v": 0
+    "icon": "icon"
 }
 ```
 
@@ -150,15 +147,13 @@ sudo systemctl enable mongodb
         "_id": "id",
         "deviceName": "deviceName",
         "deviceId": "deviceId",
-        "registrationId": "registrationId",
-        "__v": 0
+        "registrationId": "registrationId"
     },
     {
         "_id": "id",
         "deviceName": "deviceName",
         "deviceId": "deviceId",
-        "registrationId": "registrationId",
-        "__v": 0
+        "registrationId": "registrationId"
     }
 ]
 ```
@@ -189,8 +184,7 @@ sudo systemctl enable mongodb
     "_id": "id",
     "deviceName": "deviceName",
     "deviceId": "deviceId",
-    "registrationId": "registrationId",
-    "__v": 0
+    "registrationId": "registrationId"
 }
 ```
 

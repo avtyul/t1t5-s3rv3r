@@ -4,6 +4,8 @@ const FeatureSchema = new mongoose.Schema({
     action: String,
     type: String,
     icon: String
+},{
+   versionKey: false
 });
 
 FeatureSchema.statics.addFeature = function(data) {

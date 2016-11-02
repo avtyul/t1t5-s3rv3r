@@ -37,7 +37,9 @@ sudo systemctl start mongodb
 sudo systemctl enable mongodb
 ```
 
-## API
+# API
+
+## login
 
 ### POST /login
 Получение токена
@@ -53,6 +55,8 @@ sudo systemctl enable mongodb
     "token": "token"
 }
 ```
+
+## features
 
 ### GET /features
 Возвращает массив фич.
@@ -136,6 +140,67 @@ sudo systemctl enable mongodb
 ```
 "OK"
 ```
+## devices
 
-## Authors
+### GET /devices
+Возвращает массив девайсов.
+```
+[
+    {
+        "_id": "id",
+        "deviceName": "deviceName",
+        "deviceId": "deviceId",
+        "registrationId": "registrationId",
+        "__v": 0
+    },
+    {
+        "_id": "id",
+        "deviceName": "deviceName",
+        "deviceId": "deviceId",
+        "registrationId": "registrationId",
+        "__v": 0
+    }
+]
+```
+
+### POST /devices
+Добавляет новый девайс
+```
+{
+    "data": {
+        "deviceName": "deviceName",
+        "deviceId": "deviceId",
+        "registrationId": "registrationId"
+    },
+    "token": "token"
+}
+```
+Возвращает id девайса
+```
+{
+    "_id": "id"
+}
+```
+
+### GET /features/:id
+Возвращает конкретный девайс
+```
+{
+    "_id": "id",
+    "deviceName": "deviceName",
+    "deviceId": "deviceId",
+    "registrationId": "registrationId",
+    "__v": 0
+}
+```
+
+### DELETE /features/:id
+Удаляет конкретный девайс
+```
+{
+    "token": "token"
+}
+```
+
+# Authors
 avtyul, KasyanDiGris

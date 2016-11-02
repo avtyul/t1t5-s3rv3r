@@ -201,6 +201,10 @@ sudo systemctl enable mongodb
     "token": "token"
 }
 ```
+Возвращает ОК
+```
+"OK"
+```
 
 # Authors
 avtyul, KasyanDiGris

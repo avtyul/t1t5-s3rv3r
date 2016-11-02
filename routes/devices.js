@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
     DeviceModel.addDevice(data)
         .then((device) => {
             console.log('device: ', device);
-            res.json({result: "nekhoya", message: "sebe"});
+            res.json({_id: device._id});
         })
         .catch((error) => {
             console.log('devices post / addDevice error: ', error);

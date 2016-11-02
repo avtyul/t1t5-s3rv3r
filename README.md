@@ -45,7 +45,7 @@ sudo systemctl enable mongodb
 Получение токена
 ```
 {
-    "login": "qwerty"
+    "login": "qwerty",
     "password": "qwerty"
 }
 ```

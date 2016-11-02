@@ -6,16 +6,18 @@ const jwt = require('jsonwebtoken');
 router.post('/', (req, res) => {
     let data = req.body;
     if (!data) {
+        console.log('login post / data error');
         res.send('Error');
         return;
     }
     UserModel.findOne({login: data.login, password: data.password}, (error, user) => {
         if (error || !user) {
+            console.log('login post / findOne error');
             res.send('Error');
             return;
         }
         const token = jwt.sign(user, req.app.get('superSecret'), {
-          expiresIn: "1 day"
+            expiresIn: "1 day"
         });
         res.json({token: token});
     });

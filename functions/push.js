@@ -11,7 +11,7 @@ function push(data, to) {
             body: "Список фич обновился!"
         }
     });
-    let sender = new gcm.Sender('AIzaSyDnG7F5yyYABdDAKb6nIOiQqynnbscjcjM');
+    let sender = new gcm.Sender('YOUR TOKEN');
 
     sender.send(message, { registrationTokens: to }, (err, response) => {
         if (err) {

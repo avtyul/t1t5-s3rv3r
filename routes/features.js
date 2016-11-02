@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 // Добавление нового, по токену
 router.post('/', (req, res) => {
     jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
-        if (error) {
+        if (error || decoded._doc.login === "android") {
             console.log('features post / token error: ', error);
             res.send('Token error');
             return;
@@ -66,7 +66,7 @@ router.post('/', (req, res) => {
 // Удаление всех, по токену
 router.delete('/', (req, res) => {
     jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
-        if (error) {
+        if (error || decoded._doc.login === "android") {
             console.log('features delete / token error: ', error);
             res.send('Token error');
             return;
@@ -99,7 +99,7 @@ router.get('/:id', (req, res) => {
 // Изменение конкретного, по токену
 router.put('/:id', (req, res) => {
     jwt.verify(req.body.token, req.app.get('superSecret'), (error, decoded) => {
-        if (error) {
+        if (error || decoded._doc.login === "android") {
             console.log('features put /:id token error: ', error);
             res.send('Token error');
             return;
@@ -112,7 +112,7 @@ router.put('/:id', (req, res) => {
         res.send('Error');
         return;
     }
-    FeatureModel.changeFeature(data)
+    FeatureModel.changeFeature(data, id)
         .then((feature) => {
             res.json({_id: feature._id});
             pushFeatures();

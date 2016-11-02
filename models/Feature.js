@@ -18,9 +18,9 @@ FeatureSchema.statics.addFeature = function(data) {
     });
 };
 
-FeatureSchema.statics.changeFeature = function(data) {
+FeatureSchema.statics.changeFeature = function(data, id) {
     return new Promise((resolve, reject) => {
-        let feature = this.findOneAndUpdate({_id: data._id}, data, (error, feature) => {
+        let feature = this.findOneAndUpdate({_id: id}, data, (error, feature) => {
             if (error && !feature) {
                 reject(error);
             }

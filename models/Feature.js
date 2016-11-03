@@ -1,12 +1,45 @@
 const mongoose = require('mongoose');
 
 const FeatureSchema = new mongoose.Schema({
-    action: String,
+    action: { type: String, unique: true },
     type: String,
     icon: String
 },{
-   versionKey: false
+    versionKey: false
 });
+
+FeatureSchema.statics.findFeatures = function() {
+    return new Promise((resolve, reject) => {
+        this.find((error, features) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(features);
+        });
+    });
+};
+
+FeatureSchema.statics.removeFeatures = function() {
+    return new Promise((resolve, reject) => {
+        this.remove({}, (error, features) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(features);
+        });
+    });
+};
+
+FeatureSchema.statics.findOneFeature = function(action) {
+    return new Promise((resolve, reject) => {
+        this.findOne({action: action}, (error, feature) => {
+            if (error) {
+                reject(error);
+            }
+            resolve(feature);
+        });
+    });
+};
 
 FeatureSchema.statics.addFeature = function(data) {
     return new Promise((resolve, reject) => {
@@ -20,9 +53,9 @@ FeatureSchema.statics.addFeature = function(data) {
     });
 };
 
-FeatureSchema.statics.changeFeature = function(data, id) {
+FeatureSchema.statics.changeFeature = function(data, action) {
     return new Promise((resolve, reject) => {
-        let feature = this.findOneAndUpdate({_id: id}, data, (error, feature) => {
+        this.findOneAndUpdate({action: action}, data, (error, feature) => {
             if (error && !feature) {
                 reject(error);
             }

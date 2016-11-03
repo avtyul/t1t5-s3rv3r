@@ -1,4 +1,5 @@
 const gcm = require('node-gcm');
+const config = require('../config');
 
 function push(data, to) {
     console.log('push data: ', data);
@@ -11,7 +12,7 @@ function push(data, to) {
             body: "Список фич обновился!"
         }
     });
-    let sender = new gcm.Sender('YOUR TOKEN');
+    let sender = new gcm.Sender(config.apiKey);
 
     sender.send(message, { registrationTokens: to }, (err, response) => {
         if (err) {

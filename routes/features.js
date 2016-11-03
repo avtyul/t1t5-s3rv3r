@@ -108,7 +108,7 @@ router.get('/:action', (req, res) => {
     FeatureModel.findOneFeature(action)
         .then((feature) => {
             if (!feature) {
-                console.log('features get /:action error: ', error);
+                console.log('features get /:action error: ');
                 res.status(400).json({error: 'no such feature'});
                 return;
             }
@@ -146,6 +146,7 @@ router.put('/:action', (req, res) => {
             }
             FeatureModel.changeFeature(data, action)
                 .then((feature) => {
+                    console.log('feature: ', feature);
                     res.status(200).json({action: feature.action});
                     pushFeatures();
                 })
@@ -172,11 +173,11 @@ router.delete('/:action', (req, res) => {
             FeatureModel.findOneFeature(action)
                 .then((feature) => {
                     if (!feature) {
-                        console.log('features delete /:action findOne error: ', error);
+                        console.log('features delete /:action findOne error');
                         res.status(400).json({error: 'no such feature'});
                         return;
                     }
-                    feature.removeFeature()
+                    FeatureModel.removeFeature(feature)
                         .then(() => {
                             res.status(200).json({message: 'OK'});
                             pushFeatures();

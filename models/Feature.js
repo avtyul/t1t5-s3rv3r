@@ -56,6 +56,7 @@ FeatureSchema.statics.addFeature = function(data) {
 FeatureSchema.statics.changeFeature = function(data, action) {
     return new Promise((resolve, reject) => {
         this.findOneAndUpdate({action: action}, data, (error, feature) => {
+            console.log('schema change feature: ', feature);
             if (error && !feature) {
                 reject(error);
             }
@@ -64,9 +65,9 @@ FeatureSchema.statics.changeFeature = function(data, action) {
     });
 };
 
-FeatureSchema.statics.removeFeature = function () {
+FeatureSchema.statics.removeFeature = function (feature) {
     return new Promise((resolve, reject) => {
-        this.remove((error) => {
+        feature.remove((error) => {
             if (error) {
                 reject(error);
             }

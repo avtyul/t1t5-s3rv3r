@@ -22,9 +22,9 @@ router.post('/', (req, res) => {
     checkToken(req.body.token, req.app.get('superSecret'))
         .then((decoded) => {
             let data = {
-                deviceName: req.body.deviceName,
-                deviceId: req.body.deviceId,
-                registrationId: req.body.registrationId
+                deviceName: req.body.data.deviceName,
+                deviceId: req.body.data.deviceId,
+                registrationId: req.body.data.registrationId
             };
             if (!data.deviceName || !data.deviceId || !data.registrationId) {
                 console.log('devices post / data error');
@@ -53,7 +53,7 @@ router.get('/:registrationId', (req, res) => {
     DeviceModel.findOneDevice(registrationId)
         .then((device) => {
             if (!device) {
-                console.log('devices get /:registrationId error: ', error);
+                console.log('devices get /:registrationId error');
                 res.status(400).json({error: 'no such device'});
                 return;
             }
@@ -78,7 +78,7 @@ router.delete('/:registrationId', (req, res) => {
             DeviceModel.findOneDevice(registrationId)
                 .then((device) => {
                     if (!device) {
-                        console.log('devices delete /:registrationId findOne error: ', error);
+                        console.log('devices delete /:registrationId findOne error');
                         res.status(400).json({error: 'no such device'});
                         return;
                     }

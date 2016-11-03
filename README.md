@@ -63,13 +63,11 @@ sudo systemctl enable mongodb
 ```
 [
     {
-        "_id": "id",
         "action": "action",
         "type": "type",
         "icon": "icon"
     },
     {
-        "_id": "id",
         "action": "action",
         "type": "type",
         "icon": "icon"
@@ -89,25 +87,24 @@ sudo systemctl enable mongodb
     "token": "token"
 }
 ```
-Возвращает id фичи
+Возвращает action фичи
 ```
 {
-    "_id": "id"
+    "action": "action"
 }
 ```
 
-### GET /features/:id
+### GET /features/:action
 Возвращает конкретную фичу
 ```
 {
-    "_id": "id",
     "action": "action",
     "type": "type",
     "icon": "icon"
 }
 ```
 
-### PUT /features/:id
+### PUT /features/:action
 Изменяет конкретную фичу
 ```
 {
@@ -119,14 +116,14 @@ sudo systemctl enable mongodb
     "token": "token"
 }
 ```
-Возвращает id фичи
+Возвращает action фичи
 ```
 {
-    "_id": "id"
+    "action": "action"
 }
 ```
 
-### DELETE /features/:id
+### DELETE /features/:action
 Удаляет конкретную фичу
 ```
 {
@@ -144,13 +141,11 @@ sudo systemctl enable mongodb
 ```
 [
     {
-        "_id": "id",
         "deviceName": "deviceName",
         "deviceId": "deviceId",
         "registrationId": "registrationId"
     },
     {
-        "_id": "id",
         "deviceName": "deviceName",
         "deviceId": "deviceId",
         "registrationId": "registrationId"
@@ -170,25 +165,24 @@ sudo systemctl enable mongodb
     "token": "token"
 }
 ```
-Возвращает id девайса
+Возвращает registrationId девайса
 ```
 {
-    "_id": "id"
+    "registrationId": "registrationId"
 }
 ```
 
-### GET /features/:id
+### GET /devices/:registrationId
 Возвращает конкретный девайс
 ```
 {
-    "_id": "id",
     "deviceName": "deviceName",
     "deviceId": "deviceId",
     "registrationId": "registrationId"
 }
 ```
 
-### DELETE /features/:id
+### DELETE /devices/:registrationId
 Удаляет конкретный девайс
 ```
 {
